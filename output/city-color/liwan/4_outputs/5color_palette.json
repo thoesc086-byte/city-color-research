@@ -1,0 +1,67 @@
+{
+  "name": "荔湾·西关 5 色色谱",
+  "method": "在线远程取色：154 张图像 → 5 色 K-means → 三元映射 → 5 色定调",
+  "source_count": 154,
+  "colors": [
+    {
+      "name": "麻石青",
+      "story": "西关麻石巷与青砖墙的中性灰，是整个老城的视觉骨架",
+      "source": "data-driven (gray family, weight 5.0%)",
+      "rgb": [
+        134,
+        133,
+        128
+      ],
+      "hex": "#868580",
+      "role": "主色 / 骨架"
+    },
+    {
+      "name": "骑楼米",
+      "story": "沙面欧式建筑、恩宁路骑楼、西关大屋外墙的暖米黄基调",
+      "source": "data-driven (warm neutral 30-50°, weight 2.7%)",
+      "rgb": [
+        179,
+        159,
+        138
+      ],
+      "hex": "#b39f8a",
+      "role": "辅色 / 街墙"
+    },
+    {
+      "name": "满洲窗红",
+      "story": "西关大屋满洲窗彩色玻璃中的标志红，也呼应粤剧戏服与老字号金匾",
+      "source": "data-driven (red family, from category 粤剧)",
+      "rgb": [
+        216,
+        30,
+        32
+      ],
+      "hex": "#d81e20",
+      "role": "点缀色 / 文化符号"
+    },
+    {
+      "name": "沙面蓝",
+      "story": "沙面欧式建筑的百叶窗与拱券圳色、白鹅潭江面复合蓝",
+      "source": "data-driven (blue 195-220°)",
+      "rgb": [
+        53,
+        87,
+        109
+      ],
+      "hex": "#35576d",
+      "role": "次主色 / 滨水"
+    },
+    {
+      "name": "粤剧赭",
+      "story": "粤剧戏服、广彩瓷器、老字号木匾的暖赭色，岭南文化的暖底色",
+      "source": "data-driven (orange-red 15-35°, sat 69%)",
+      "rgb": [
+        202,
+        144,
+        63
+      ],
+      "hex": "#ca903f",
+      "role": "辅色 / 文化暖色"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "麻石青": [
+    {
+      "image": "历史/shamian_61c226fcb7.jpg",
+      "matched_rgb": [
+        133,
+        132,
+        126
+      ],
+      "weight_in_image": 0.3034,
+      "distance": 2.449489742783178
+    },
+    {
+      "image": "历史/shisanhang_b51043f2b7.jpg",
+      "matched_rgb": [
+        138,
+        131,
+        131
+      ],
+      "weight_in_image": 0.2657,
+      "distance": 5.385164807134504
+    },
+    {
+      "image": "民居/mashi_1cd047511e.jpg",
+      "matched_rgb": [
+        142,
+        133,
+        126
+      ],
+      "weight_in_image": 0.2798,
+      "distance": 8.246211251235321
+    },
+    {
+      "image": "民居/manzhou_chuang_48277268db.jpg",
+      "matched_rgb": [
+        125,
+        137,
+        137
+      ],
+      "weight_in_image": 0.32,
+      "distance": 13.341664064126334
+    },
+    {
+      "image": "民居/xiguan_dawu_0b217c1855.jpg",
+      "matched_rgb": [
+        127,
+        128,
+        123
+      ],
+      "weight_in_image": 0.28125,
+      "distance": 9.9498743710662
+    }
+  ],
+  "骑楼米": [
+    {
+      "image": "民居/mashi_1ea1122aae.jpg",
+      "matched_rgb": [
+        170,
+        160,
+        139
+      ],
+      "weight_in_image": 0.356,
+      "distance": 9.1104335791443
+    },
+    {
+      "image": "老字号/taotaoju_b4ea5cbdba.jpg",
+      "matched_rgb": [
+        177,
+        156,
+        132
+      ],
+      "weight_in_image": 0.27825,
+      "distance": 7.0
+    },
+    {
+      "image": "老字号/taotaoju_287e0be843.jpeg",
+      "matched_rgb": [
+        170,
+        153,
+        150
+      ],
+      "weight_in_image": 0.274,
+      "distance": 16.15549442140351
+    },
+    {
+      "image": "自然/baietan_11836ea3f6.jpg",
+      "matched_rgb": [
+        180,
+        151,
+        142
+      ],
+      "weight_in_image": 0.17705,
+      "distance": 9.0
+    },
+    {
+      "image": "历史/shisanhang_8be1156302.jpg",
+      "matched_rgb": [
+        177,
+        157,
+        136
+      ],
+      "weight_in_image": 0.1137,
+      "distance": 3.4641016151377544
+    }
+  ],
+  "满洲窗红": [
+    {
+      "image": "粤剧/yueju_1cee783674.jpg",
+      "matched_rgb": [
+        216,
+        31,
+        32
+      ],
+      "weight_in_image": 0.18245,
+      "distance": 1.0
+    },
+    {
+      "image": "历史/yongqingfang_dff52b4c7d.jpg",
+      "matched_rgb": [
+        221,
+        21,
+        40
+      ],
+      "weight_in_image": 0.24285,
+      "distance": 13.038404810405298
+    },
+    {
+      "image": "历史/yongqingfang_735551b8f7.jpg",
+      "matched_rgb": [
+        203,
+        43,
+        44
+      ],
+      "weight_in_image": 0.1431,
+      "distance": 21.95449840010015
+    },
+    {
+      "image": "民居/pantang_adbadb8732.jpg",
+      "matched_rgb": [
+        191,
+        40,
+        25
+      ],
+      "weight_in_image": 0.08555,
+      "distance": 27.820855486487112
+    },
+    {
+      "image": "民居/manzhou_chuang_73b2b9350c.jpg",
+      "matched_rgb": [
+        220,
+        68,
+        22
+      ],
+      "weight_in_image": 0.086,
+      "distance": 39.496835316262995
+    }
+  ],
+  "沙面蓝": [
+    {
+      "image": "自然/baietan_c2762765f8.jpg",
+      "matched_rgb": [
+        62,
+        90,
+        91
+      ],
+      "weight_in_image": 0.21205,
+      "distance": 20.346989949375804
+    },
+    {
+      "image": "自然/lizhiwan_526378a22c.jpg",
+      "matched_rgb": [
+        48,
+        63,
+        112
+      ],
+      "weight_in_image": 0.25535,
+      "distance": 24.698178070456937
+    },
+    {
+      "image": "自然/baietan_4cf5da954c.jpg",
+      "matched_rgb": [
+        97,
+        99,
+        129
+      ],
+      "weight_in_image": 0.48015,
+      "distance": 49.79959839195493
+    },
+    {
+      "image": "历史/shisanhang_8fe41493cb.jpg",
+      "matched_rgb": [
+        66,
+        90,
+        136
+      ],
+      "weight_in_image": 0.20695,
+      "distance": 30.116440692751194
+    },
+    {
+      "image": "自然/baietan_83b7ed399a.jpg",
+      "matched_rgb": [
+        70,
+        78,
+        83
+      ],
+      "weight_in_image": 0.2257,
+      "distance": 32.341923257592455
+    }
+  ],
+  "粤剧赭": [
+    {
+      "image": "老字号/guangzhoujiujia_fa1241d45c.jpg",
+      "matched_rgb": [
+        196,
+        146,
+        53
+      ],
+      "weight_in_image": 0.1716,
+      "distance": 11.832159566199232
+    },
+    {
+      "image": "老字号/guangzhoujiujia_bb7a65579a.jpeg",
+      "matched_rgb": [
+        209,
+        143,
+        75
+      ],
+      "weight_in_image": 0.1545,
+      "distance": 13.92838827718412
+    },
+    {
+      "image": "历史/yongqingfang_1cbc619e24.jpg",
+      "matched_rgb": [
+        193,
+        149,
+        54
+      ],
+      "weight_in_image": 0.06825,
+      "distance": 13.674794331177344
+    },
+    {
+      "image": "粤剧/yueju_5a0e10fbe6.png",
+      "matched_rgb": [
+        186,
+        125,
+        71
+      ],
+      "weight_in_image": 0.17955,
+      "distance": 26.095976701399778
+    },
+    {
+      "image": "粤剧/yueju_1cee783674.jpg",
+      "matched_rgb": [
+        191,
+        130,
+        87
+      ],
+      "weight_in_image": 0.20365,
+      "distance": 29.88310559496787
+    }
+  ]
+}

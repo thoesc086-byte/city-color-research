@@ -1,0 +1,18 @@
+# 敏感信息
+MEMORY.md
+memory/*.md
+memory/.dreams/
+
+# OpenClaw 系统文件
+.openclaw/
+config/
+
+# Sessions 归档（可能包含 API keys）
+sessions_archive/*.jsonl
+
+# macOS
+.DS_Store
+
+# 临时文件
+*.log
+*.tmp
