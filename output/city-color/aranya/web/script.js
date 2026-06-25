@@ -284,67 +284,6 @@ function findColor(key) {
   return allZoneColors(activeZone)[0];
 }
 
-function hexToRgb(hex) {
-  const value = hex.replace("#", "");
-  return {
-    r: parseInt(value.slice(0, 2), 16),
-    g: parseInt(value.slice(2, 4), 16),
-    b: parseInt(value.slice(4, 6), 16)
-  };
-}
-
-function estimateNcs(hex) {
-  const { r, g, b } = hexToRgb(hex);
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const blackness = Math.round((1 - max / 255) * 100 / 5) * 5;
-  const chroma = Math.round(((max - min) / 255) * 100 / 5) * 5;
-  const hue = b > r && b > g ? "B" : g > r ? "G30Y" : r > b ? "Y50R" : "Y";
-  return `NCS S ${String(Math.max(5, blackness)).padStart(2, "0")}${String(Math.max(2, chroma)).padStart(2, "0")}-${hue}`;
-}
-
-function colorSpec(color) {
-  const roles = {
-    primary: "主色 / 区域基底 · 建议 55-70%",
-    secondary: "辅色 / 场景层级 · 建议 15-30%",
-    accent: "点缀 / 节点识别 · 建议 3-8%"
-  };
-  const rgb = hexToRgb(color.hex);
-  return {
-    rgb: `RGB ${rgb.r} · ${rgb.g} · ${rgb.b}`,
-    ncs: estimateNcs(color.hex),
-    role: roles[color.group] || color.use
-  };
-}
-
-function representativeImages(color) {
-  const pool = [
-    color.image,
-    zoneImages[activeZone],
-    color.group === "primary" ? "assets/lonely-library-grey.jpg" : "assets/chapel-aerial-blue.jpg",
-    color.group === "secondary" ? "assets/ucca-dune-museum.jpg" : "assets/aranya-art-center.jpg",
-    color.group === "accent" ? "assets/sunset-people.jpg" : "assets/aranya-community.jpg",
-    "assets/aranya-chapel-unsplash.jpg",
-    "assets/chapel-aerial-blue.jpg",
-    "assets/ucca-dune-museum.jpg",
-    "assets/lonely-library-grey.jpg",
-    "assets/aranya-art-center.jpg",
-    "assets/aranya-community.jpg",
-    "assets/sunset-people.jpg"
-  ];
-  return [...new Set(pool)].slice(0, 5);
-}
-
-function evidenceReasons(color) {
-  const spec = colorSpec(color);
-  return [
-    ["客观场景依据", `${zones[activeZone].title}中可反复观察到${color.source}，不是孤立装饰色。`],
-    ["图像采样依据", `从相关照片避开极端高光与纯阴影，优先取稳定中间调，得到 ${color.hex}。`],
-    ["色彩关系依据", color.groupLogic],
-    ["应用管控依据", `${color.use}；面积比例按${spec.role}控制，避免破坏区域主调。`]
-  ];
-}
-
 function smallColorButton(color, active = false) {
   return `<button class="mini-color ${active ? "active" : ""}" data-color="${color.key}" style="--mini:${color.hex}">
     <span></span><strong>${color.name}</strong><small>${color.hex}</small>
@@ -393,9 +332,6 @@ function renderColorList(zoneKey) {
 
 function renderColorDetail(key) {
   const color = findColor(key);
-  const spec = colorSpec(color);
-  const images = representativeImages(color);
-  const reasons = evidenceReasons(color);
   colorDetail.innerHTML = `
     <div class="detail-photo">
       <img src="${color.image}" alt="${color.name}来源照片">
@@ -404,19 +340,8 @@ function renderColorDetail(key) {
       <p class="eyebrow">${color.groupLabel}</p>
       <h2>${color.name}</h2>
       <p class="detail-role">${color.use}</p>
-      <div class="detail-swatch" style="--detail:${color.hex}">
-        <span>${color.hex}</span>
-        <small>${spec.rgb}</small>
-        <small>${spec.ncs}</small>
-        <small>${spec.role}</small>
-      </div>
+      <div class="detail-swatch" style="--detail:${color.hex}"><span>${color.hex}</span></div>
       <p class="detail-story">${color.reason}</p>
-      <div class="reason-list">
-        ${reasons.map((item, index) => `<div class="reason-item"><b>${String(index + 1).padStart(2, "0")}</b><div><strong>${item[0]}</strong><span>${item[1]}</span></div></div>`).join("")}
-      </div>
-      <div class="sample-strip" aria-label="${color.name}代表图片">
-        ${images.map((src) => `<figure><img src="${src}" alt="${color.name}代表样本"><figcaption>${color.name}</figcaption></figure>`).join("")}
-      </div>
       <ol class="process-list">
         <li><strong>区域依据</strong><span>${zones[activeZone].title}：${zoneResearch[activeZone]}</span></li>
         <li><strong>观察对象</strong><span>${color.source}</span></li>
