@@ -298,6 +298,15 @@ function isDarkColor(hex) {
   return (r * 299 + g * 587 + b * 114) / 1000 < 138;
 }
 
+function rgbTriplet(hex) {
+  const value = hex.replace("#", "");
+  return [
+    parseInt(value.slice(0, 2), 16),
+    parseInt(value.slice(2, 4), 16),
+    parseInt(value.slice(4, 6), 16)
+  ].join(" · ");
+}
+
 function richColorCard(color, groupKey = "") {
   const textColor = isDarkColor(color.hex) ? "#F4F1EA" : "#1A1A1A";
   return `<button class="tone-color" data-color="${color.key}" style="--tone:${color.hex};--toneText:${textColor}">
@@ -341,6 +350,54 @@ function renderColorList(zoneKey) {
 
 function renderColorDetail(key) {
   const color = findColor(key);
+  colorDetail.classList.toggle("accent-detail", color.group === "accent");
+  if (color.group === "accent") {
+    const accentIndex = allZoneColors(activeZone).filter((item) => item.group === "accent").findIndex((item) => item.key === key) + 1;
+    colorDetail.innerHTML = `
+      <div class="accent-detail-copy">
+        <p class="accent-detail-no">NO. ${String(accentIndex).padStart(2, "0")}</p>
+        <p class="eyebrow">${color.groupLabel}</p>
+        <h2>${color.name}</h2>
+        <p class="detail-role">${color.use}</p>
+
+        <div class="accent-detail-swatch" style="--detail:${color.hex};--detailText:${isDarkColor(color.hex) ? "#F4F1EA" : "#25302D"}">
+          <strong>${color.hex}</strong>
+          <span>RGB&nbsp;&nbsp;${rgbTriplet(color.hex)}</span>
+          <span>${color.groupLabel} / ${color.use}</span>
+        </div>
+
+        <section class="accent-explain">
+          <p class="accent-label">何为此色</p>
+          <p>${color.reason}</p>
+        </section>
+
+        <section class="accent-explain">
+          <p class="accent-label">应用场景</p>
+          <p>${color.groupLogic}</p>
+        </section>
+
+        <section class="accent-explain">
+          <p class="accent-label">提取流程</p>
+          <ol class="accent-process">
+            <li><span>01</span><p>先定位 ${zones[activeZone].title} 的真实场景：${zoneResearch[activeZone]}</p></li>
+            <li><span>02</span><p>从照片中锁定“${color.source}”，避开极端高光、阴影和后期滤镜。</p></li>
+            <li><span>03</span><p>提取稳定中间调并与同区域主色、辅色对比，只保留能承担提示、活动或识别功能的小面积颜色。</p></li>
+          </ol>
+        </section>
+
+        <section class="accent-explain">
+          <p class="accent-label">代表样本（照片匹配）</p>
+          <div class="accent-photo-evidence">
+            <img src="${color.image}" alt="${color.name}来源照片">
+          </div>
+        </section>
+      </div>
+    `;
+    document.querySelectorAll("[data-color]").forEach((button) => {
+      button.classList.toggle("active", button.dataset.color === key);
+    });
+    return;
+  }
   colorDetail.innerHTML = `
     <div class="detail-photo">
       <img src="${color.image}" alt="${color.name}来源照片">

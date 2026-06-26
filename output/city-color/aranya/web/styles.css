@@ -605,6 +605,123 @@ h3 { font-size: .78rem; line-height: 1.45; }
 }
 .process-list span { color: var(--muted); line-height: 1.65; }
 
+.color-detail.accent-detail {
+  display: block;
+  overflow: visible;
+  background: rgba(248,245,239,.94);
+}
+
+.accent-detail-copy {
+  max-width: 42rem;
+  padding: clamp(1.6rem, 5vw, 3.4rem);
+}
+
+.accent-detail-no {
+  margin-bottom: 1.6rem;
+  color: rgba(37,48,45,.38);
+  font-family: "Courier New", monospace;
+  font-size: .72rem;
+  letter-spacing: .24em;
+}
+
+.accent-detail-copy h2 {
+  margin-top: .75rem;
+  font-family: Georgia, "Songti SC", serif;
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+  font-weight: 400;
+  line-height: .96;
+  letter-spacing: 0;
+}
+
+.accent-detail-swatch {
+  min-height: clamp(12rem, 28vw, 20rem);
+  display: grid;
+  align-content: end;
+  gap: .85rem;
+  margin-top: clamp(2.4rem, 6vw, 4.8rem);
+  padding: clamp(1.25rem, 4vw, 2.4rem);
+  background: var(--detail);
+  color: var(--detailText);
+}
+
+.accent-detail-swatch strong {
+  font-size: clamp(1.55rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.accent-detail-swatch span {
+  display: block;
+  font-size: .74rem;
+  letter-spacing: .06em;
+  opacity: .82;
+}
+
+.accent-explain {
+  margin-top: clamp(2.2rem, 5vw, 4rem);
+}
+
+.accent-label {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  color: #9e6a66;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+}
+
+.accent-label + p {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.22rem);
+  line-height: 1.95;
+}
+
+.accent-process {
+  display: grid;
+  gap: 1.1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.accent-process li {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.accent-process span {
+  color: rgba(37,48,45,.42);
+  font-family: "Courier New", monospace;
+  font-size: .78rem;
+  letter-spacing: .08em;
+}
+
+.accent-process p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.accent-photo-evidence {
+  display: grid;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.accent-photo-evidence img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .evidence-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
