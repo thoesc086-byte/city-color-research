@@ -465,15 +465,26 @@ h3 { font-size: .78rem; line-height: 1.45; }
   box-shadow: inset 0 0 0 2px rgba(37,48,45,.18);
 }
 
+.tone-row.primary .tone-colors,
+.tone-row.secondary .tone-colors,
 .tone-row.accent .tone-colors {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  counter-reset: accent-swatch;
   gap: 0;
   background: transparent;
 }
 
+.tone-row.primary .tone-colors,
+.tone-row.secondary .tone-colors {
+  counter-reset: tone-swatch;
+}
+
+.tone-row.accent .tone-colors {
+  counter-reset: accent-swatch;
+}
+
+.tone-row.primary .tone-color,
+.tone-row.secondary .tone-color,
 .tone-row.accent .tone-color {
-  counter-increment: accent-swatch;
   min-height: 11rem;
   display: flex;
   flex-direction: column;
@@ -485,19 +496,42 @@ h3 { font-size: .78rem; line-height: 1.45; }
   transition: padding .4s ease, filter .4s ease, transform .4s ease;
 }
 
+.tone-row.primary .tone-color,
+.tone-row.secondary .tone-color {
+  counter-increment: tone-swatch;
+}
+
+.tone-row.accent .tone-color {
+  counter-increment: accent-swatch;
+}
+
+.tone-row.primary .tone-color::before,
+.tone-row.secondary .tone-color::before,
 .tone-row.accent .tone-color::before {
-  content: counter(accent-swatch, decimal-leading-zero);
   font-size: .55rem;
   letter-spacing: .14em;
   opacity: .72;
 }
 
+.tone-row.primary .tone-color::before,
+.tone-row.secondary .tone-color::before {
+  content: counter(tone-swatch, decimal-leading-zero);
+}
+
+.tone-row.accent .tone-color::before {
+  content: counter(accent-swatch, decimal-leading-zero);
+}
+
+.tone-row.primary .tone-color:hover,
+.tone-row.secondary .tone-color:hover,
 .tone-row.accent .tone-color:hover {
   padding-bottom: 1.8rem;
   transform: translateY(-3px);
   filter: saturate(1.05) contrast(1.02);
 }
 
+.tone-row.primary .tone-color.active,
+.tone-row.secondary .tone-color.active,
 .tone-row.accent .tone-color.active {
   background: var(--tone);
   outline: 2px solid var(--ink);
@@ -505,20 +539,33 @@ h3 { font-size: .78rem; line-height: 1.45; }
   transform: translateY(-2px);
 }
 
+.tone-row.primary .tone-color:active,
+.tone-row.secondary .tone-color:active,
 .tone-row.accent .tone-color:active {
   transform: translateY(1px);
 }
 
+.tone-row.primary .tone-color::after,
+.tone-row.secondary .tone-color::after {
+  display: none;
+}
+
+.tone-row.primary .tone-chip,
+.tone-row.secondary .tone-chip,
 .tone-row.accent .tone-chip {
   display: none;
 }
 
+.tone-row.primary .tone-meta,
+.tone-row.secondary .tone-meta,
 .tone-row.accent .tone-meta {
   display: grid;
   gap: .4rem;
   min-width: 0;
 }
 
+.tone-row.primary .tone-meta strong,
+.tone-row.secondary .tone-meta strong,
 .tone-row.accent .tone-meta strong {
   font-family: Georgia, "Songti SC", serif;
   font-size: 1rem;
@@ -527,12 +574,16 @@ h3 { font-size: .78rem; line-height: 1.45; }
   overflow-wrap: anywhere;
 }
 
+.tone-row.primary .tone-meta small,
+.tone-row.secondary .tone-meta small,
 .tone-row.accent .tone-meta small {
   margin-top: 0;
   color: inherit;
   opacity: .82;
 }
 
+.tone-row.primary .tone-meta em,
+.tone-row.secondary .tone-meta em,
 .tone-row.accent .tone-meta em {
   display: none;
 }
@@ -908,33 +959,28 @@ h3 { font-size: .78rem; line-height: 1.45; }
   .map-sea { inset: 0 0 0 55%; font-size: 2.25rem; writing-mode: vertical-rl; }
   .zone { font-size: .615rem; }
   .tone-row.primary .tone-color,
-  .tone-row.secondary .tone-color {
-    grid-template-columns: 3.8rem 1fr;
-    min-height: 7.6rem;
-    gap: .8rem;
-    padding: .75rem;
-  }
-  .tone-row.primary .tone-chip,
-  .tone-row.secondary .tone-chip {
-    min-height: 3.8rem;
-  }
-  .tone-row.primary .tone-color::after,
-  .tone-row.secondary .tone-color::after {
-    inset: .75rem auto .75rem calc(.75rem + 3.8rem);
-  }
+  .tone-row.secondary .tone-color,
   .tone-row.accent .tone-color {
     min-height: 7.4rem;
     padding: .65rem .45rem;
   }
+  .tone-row.primary .tone-color:hover,
+  .tone-row.secondary .tone-color:hover,
   .tone-row.accent .tone-color:hover {
     padding-bottom: 1rem;
   }
+  .tone-row.primary .tone-color::before,
+  .tone-row.secondary .tone-color::before,
   .tone-row.accent .tone-color::before {
     font-size: .46rem;
   }
+  .tone-row.primary .tone-meta strong,
+  .tone-row.secondary .tone-meta strong,
   .tone-row.accent .tone-meta strong {
     font-size: .68rem;
   }
+  .tone-row.primary .tone-meta small,
+  .tone-row.secondary .tone-meta small,
   .tone-row.accent .tone-meta small {
     font-size: .48rem;
   }
