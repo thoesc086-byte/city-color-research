@@ -39,7 +39,8 @@ const zones = {
           c("coast-p08", "礁影灰", "#B8B5AD", "来自海岸建筑阴影，适合作为白色体系中的压低色。", "建筑阴影", "阴影面、信息底板", "assets/lonely-library-grey.jpg"),
           c("coast-p09", "远岸灰", "#AEA9A0", "来自远处海岸线和阴天视感，承担弱对比边界。", "远岸与阴天海面", "次级文字底、栏杆", zoneImages.coast),
           c("coast-p10", "滩石灰", "#A49E94", "来自沙滩石与混凝土的中间灰，给系统增加耐久感。", "滩石、混凝土", "地面设施、台阶", "assets/lonely-library-grey.jpg"),
-          c("coast-p11", "静默灰", "#99938A", "来自图书馆体量的静默感，作为主色系最深端。", "孤独图书馆阴影", "建筑基座、标识背板", "assets/lonely-library-grey.jpg")
+          c("coast-p11", "静默灰", "#99938A", "来自图书馆体量的静默感，作为主色系较深端。", "孤独图书馆阴影", "建筑基座、标识背板", "assets/lonely-library-grey.jpg"),
+          c("coast-p12", "潮影灰", "#8D867D", "来自潮湿混凝土和背光墙面的深灰，是海岸白灰系统的收束色。", "潮湿混凝土、背光墙面", "深色基座、低明度标识", "assets/lonely-library-grey.jpg")
         ]
       },
       secondary: {
@@ -377,7 +378,6 @@ function richColorCard(color, groupKey = "") {
 
 function toneGridSettings(colorCount) {
   if (colorCount === 12) return { columns: 4, lastSpan: 1 };
-  if (colorCount === 11) return { columns: 5, lastSpan: 5 };
   if (colorCount === 10) return { columns: 5, lastSpan: 1 };
   if (colorCount === 6) return { columns: 3, lastSpan: 1 };
   return { columns: Math.min(colorCount, 5), lastSpan: 1 };

@@ -485,10 +485,6 @@ h3 { font-size: .78rem; line-height: 1.45; }
   background: transparent;
 }
 
-.tone-colors .tone-color:last-child {
-  grid-column: span var(--lastSpan, 1);
-}
-
 .tone-row.primary .tone-colors,
 .tone-row.secondary .tone-colors {
   counter-reset: tone-swatch;
@@ -501,15 +497,17 @@ h3 { font-size: .78rem; line-height: 1.45; }
 .tone-row.primary .tone-color,
 .tone-row.secondary .tone-color,
 .tone-row.accent .tone-color {
-  min-height: 11rem;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem .9rem;
+  gap: .7rem;
+  padding: .9rem;
+  overflow: hidden;
   background: var(--tone);
   color: var(--toneText);
-  transition: padding .4s ease, filter .4s ease, transform .4s ease;
+  transition: filter .35s ease, transform .35s ease;
 }
 
 .tone-row.primary .tone-color,
@@ -541,7 +539,6 @@ h3 { font-size: .78rem; line-height: 1.45; }
 .tone-row.primary .tone-color:hover,
 .tone-row.secondary .tone-color:hover,
 .tone-row.accent .tone-color:hover {
-  padding-bottom: 1.8rem;
   transform: translateY(-3px);
   filter: saturate(1.05) contrast(1.02);
 }
@@ -576,7 +573,7 @@ h3 { font-size: .78rem; line-height: 1.45; }
 .tone-row.secondary .tone-meta,
 .tone-row.accent .tone-meta {
   display: grid;
-  gap: .4rem;
+  gap: .34rem;
   min-width: 0;
 }
 
@@ -601,7 +598,17 @@ h3 { font-size: .78rem; line-height: 1.45; }
 .tone-row.primary .tone-meta em,
 .tone-row.secondary .tone-meta em,
 .tone-row.accent .tone-meta em {
-  display: none;
+  display: -webkit-box;
+  max-width: 100%;
+  margin-top: .18rem;
+  overflow: hidden;
+  color: inherit;
+  font-size: .56rem;
+  font-style: normal;
+  line-height: 1.45;
+  opacity: .72;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .mini-color {
@@ -977,13 +984,8 @@ h3 { font-size: .78rem; line-height: 1.45; }
   .tone-row.primary .tone-color,
   .tone-row.secondary .tone-color,
   .tone-row.accent .tone-color {
-    min-height: 7.4rem;
+    min-height: 0;
     padding: .65rem .45rem;
-  }
-  .tone-row.primary .tone-color:hover,
-  .tone-row.secondary .tone-color:hover,
-  .tone-row.accent .tone-color:hover {
-    padding-bottom: 1rem;
   }
   .tone-row.primary .tone-color::before,
   .tone-row.secondary .tone-color::before,
@@ -999,6 +1001,13 @@ h3 { font-size: .78rem; line-height: 1.45; }
   .tone-row.secondary .tone-meta small,
   .tone-row.accent .tone-meta small {
     font-size: .48rem;
+  }
+  .tone-row.primary .tone-meta em,
+  .tone-row.secondary .tone-meta em,
+  .tone-row.accent .tone-meta em {
+    font-size: .43rem;
+    line-height: 1.35;
+    -webkit-line-clamp: 2;
   }
   .zone-coast { right: 3%; top: 16%; }
   .zone-dune { right: 16%; top: 43%; }
