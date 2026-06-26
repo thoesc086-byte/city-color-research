@@ -611,9 +611,18 @@ h3 { font-size: .78rem; line-height: 1.45; }
   background: rgba(248,245,239,.94);
 }
 
+.accent-detail-stack {
+  display: grid;
+}
+
 .accent-detail-copy {
   max-width: 42rem;
   padding: clamp(1.6rem, 5vw, 3.4rem);
+  scroll-margin-top: 1.5rem;
+}
+
+.accent-detail-copy + .accent-detail-copy {
+  border-top: 1px solid var(--line);
 }
 
 .accent-detail-no {
