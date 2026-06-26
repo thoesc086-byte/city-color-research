@@ -375,6 +375,14 @@ function richColorCard(color, groupKey = "") {
   </button>`;
 }
 
+function toneGridSettings(colorCount) {
+  if (colorCount === 12) return { columns: 4, lastSpan: 1 };
+  if (colorCount === 11) return { columns: 5, lastSpan: 5 };
+  if (colorCount === 10) return { columns: 5, lastSpan: 1 };
+  if (colorCount === 6) return { columns: 3, lastSpan: 1 };
+  return { columns: Math.min(colorCount, 5), lastSpan: 1 };
+}
+
 function renderZone(zoneKey) {
   activeZone = zoneKey;
   const zone = zones[zoneKey];
@@ -385,13 +393,20 @@ function renderZone(zoneKey) {
 
   tonePanel.innerHTML = ["primary", "secondary", "accent"].map((groupKey) => {
     const group = zone.palettes[groupKey];
+    const grid = toneGridSettings(group.colors.length);
+    const explanation = groupKey === "accent" ? "" : `<p class="tone-explanation">${group.logic}</p>`;
     return `<article class="tone-row expanded ${groupKey}">
       <div class="tone-heading">
         <h3>${group.label}</h3>
         <p>${group.logic}</p>
         <small>${group.colors.length} 个颜色</small>
       </div>
-      <div class="tone-colors">${group.colors.map((color) => richColorCard(color, groupKey)).join("")}</div>
+      <div class="tone-board">
+        ${explanation}
+        <div class="tone-colors" style="--toneColumns:${grid.columns};--lastSpan:${grid.lastSpan}">
+          ${group.colors.map((color) => richColorCard(color, groupKey)).join("")}
+        </div>
+      </div>
     </article>`;
   }).join("");
 

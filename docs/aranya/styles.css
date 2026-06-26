@@ -388,9 +388,21 @@ h3 { font-size: .78rem; line-height: 1.45; }
   color: var(--muted);
   font-size: .585rem;
 }
+.tone-board {
+  display: grid;
+  align-content: start;
+  background: rgba(248,245,239,.78);
+}
+.tone-explanation {
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.75;
+}
 .tone-colors {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+  grid-template-columns: repeat(var(--toneColumns, 5), minmax(0, 1fr));
   gap: 1px;
   background: var(--line);
 }
@@ -468,9 +480,13 @@ h3 { font-size: .78rem; line-height: 1.45; }
 .tone-row.primary .tone-colors,
 .tone-row.secondary .tone-colors,
 .tone-row.accent .tone-colors {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--toneColumns, 5), minmax(0, 1fr));
   gap: 0;
   background: transparent;
+}
+
+.tone-colors .tone-color:last-child {
+  grid-column: span var(--lastSpan, 1);
 }
 
 .tone-row.primary .tone-colors,
