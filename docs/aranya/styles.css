@@ -395,11 +395,11 @@ h3 { font-size: .78rem; line-height: 1.45; }
   background: var(--line);
 }
 .tone-color {
-  min-height: 8.2rem;
+  min-height: 8.8rem;
   display: grid;
-  grid-template-columns: 2.35rem 1fr;
-  gap: .8rem;
-  align-items: start;
+  grid-template-columns: 4.8rem 1fr;
+  gap: 1rem;
+  align-items: stretch;
   border: 0;
   padding: .9rem;
   background: rgba(248,245,239,.78);
@@ -412,14 +412,17 @@ h3 { font-size: .78rem; line-height: 1.45; }
   background: color-mix(in srgb, var(--tone), #f8f5ef 62%);
 }
 .tone-chip {
-  width: 2.35rem;
-  height: 2.35rem;
+  align-self: start;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 4.8rem;
   border: 1px solid rgba(37,48,45,.22);
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--tone);
 }
 .tone-meta {
   min-width: 0;
+  align-self: center;
 }
 .tone-meta strong,
 .tone-meta small,
@@ -439,6 +442,27 @@ h3 { font-size: .78rem; line-height: 1.45; }
   font-size: .615rem;
   font-style: normal;
   line-height: 1.55;
+}
+
+.tone-row.primary .tone-color,
+.tone-row.secondary .tone-color {
+  position: relative;
+}
+
+.tone-row.primary .tone-color::after,
+.tone-row.secondary .tone-color::after {
+  content: "";
+  position: absolute;
+  inset: .9rem auto .9rem calc(.9rem + 4.8rem);
+  width: 1px;
+  background: rgba(37,48,45,.08);
+}
+
+.tone-row.primary .tone-color:hover .tone-chip,
+.tone-row.primary .tone-color.active .tone-chip,
+.tone-row.secondary .tone-color:hover .tone-chip,
+.tone-row.secondary .tone-color.active .tone-chip {
+  box-shadow: inset 0 0 0 2px rgba(37,48,45,.18);
 }
 
 .tone-row.accent .tone-colors {
@@ -883,6 +907,21 @@ h3 { font-size: .78rem; line-height: 1.45; }
   .real-map { min-height: 0; aspect-ratio: 3 / 4; }
   .map-sea { inset: 0 0 0 55%; font-size: 2.25rem; writing-mode: vertical-rl; }
   .zone { font-size: .615rem; }
+  .tone-row.primary .tone-color,
+  .tone-row.secondary .tone-color {
+    grid-template-columns: 3.8rem 1fr;
+    min-height: 7.6rem;
+    gap: .8rem;
+    padding: .75rem;
+  }
+  .tone-row.primary .tone-chip,
+  .tone-row.secondary .tone-chip {
+    min-height: 3.8rem;
+  }
+  .tone-row.primary .tone-color::after,
+  .tone-row.secondary .tone-color::after {
+    inset: .75rem auto .75rem calc(.75rem + 3.8rem);
+  }
   .tone-row.accent .tone-color {
     min-height: 7.4rem;
     padding: .65rem .45rem;
