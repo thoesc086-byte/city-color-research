@@ -441,6 +441,78 @@ h3 { font-size: .78rem; line-height: 1.45; }
   line-height: 1.55;
 }
 
+.tone-row.accent .tone-colors {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  counter-reset: accent-swatch;
+  gap: 0;
+  background: transparent;
+}
+
+.tone-row.accent .tone-color {
+  counter-increment: accent-swatch;
+  min-height: 11rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem .9rem;
+  background: var(--tone);
+  color: var(--toneText);
+  transition: padding .4s ease, filter .4s ease, transform .4s ease;
+}
+
+.tone-row.accent .tone-color::before {
+  content: counter(accent-swatch, decimal-leading-zero);
+  font-size: .55rem;
+  letter-spacing: .14em;
+  opacity: .72;
+}
+
+.tone-row.accent .tone-color:hover {
+  padding-bottom: 1.8rem;
+  transform: translateY(-3px);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.tone-row.accent .tone-color.active {
+  background: var(--tone);
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+  transform: translateY(-2px);
+}
+
+.tone-row.accent .tone-color:active {
+  transform: translateY(1px);
+}
+
+.tone-row.accent .tone-chip {
+  display: none;
+}
+
+.tone-row.accent .tone-meta {
+  display: grid;
+  gap: .4rem;
+  min-width: 0;
+}
+
+.tone-row.accent .tone-meta strong {
+  font-family: Georgia, "Songti SC", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.tone-row.accent .tone-meta small {
+  margin-top: 0;
+  color: inherit;
+  opacity: .82;
+}
+
+.tone-row.accent .tone-meta em {
+  display: none;
+}
+
 .mini-color {
   min-height: 6rem;
   display: grid;
@@ -685,6 +757,22 @@ h3 { font-size: .78rem; line-height: 1.45; }
   .real-map { min-height: 0; aspect-ratio: 3 / 4; }
   .map-sea { inset: 0 0 0 55%; font-size: 2.25rem; writing-mode: vertical-rl; }
   .zone { font-size: .615rem; }
+  .tone-row.accent .tone-color {
+    min-height: 7.4rem;
+    padding: .65rem .45rem;
+  }
+  .tone-row.accent .tone-color:hover {
+    padding-bottom: 1rem;
+  }
+  .tone-row.accent .tone-color::before {
+    font-size: .46rem;
+  }
+  .tone-row.accent .tone-meta strong {
+    font-size: .68rem;
+  }
+  .tone-row.accent .tone-meta small {
+    font-size: .48rem;
+  }
   .zone-coast { right: 3%; top: 16%; }
   .zone-dune { right: 16%; top: 43%; }
   .zone-art { left: 41%; top: 59%; }

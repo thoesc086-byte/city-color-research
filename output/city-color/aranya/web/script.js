@@ -290,8 +290,17 @@ function smallColorButton(color, active = false) {
   </button>`;
 }
 
-function richColorCard(color) {
-  return `<button class="tone-color" data-color="${color.key}" style="--tone:${color.hex}">
+function isDarkColor(hex) {
+  const value = hex.replace("#", "");
+  const r = parseInt(value.slice(0, 2), 16);
+  const g = parseInt(value.slice(2, 4), 16);
+  const b = parseInt(value.slice(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 < 138;
+}
+
+function richColorCard(color, groupKey = "") {
+  const textColor = isDarkColor(color.hex) ? "#F4F1EA" : "#1A1A1A";
+  return `<button class="tone-color" data-color="${color.key}" style="--tone:${color.hex};--toneText:${textColor}">
     <span class="tone-chip"></span>
     <span class="tone-meta">
       <strong>${color.name}</strong>
@@ -317,7 +326,7 @@ function renderZone(zoneKey) {
         <p>${group.logic}</p>
         <small>${group.colors.length} 个颜色</small>
       </div>
-      <div class="tone-colors">${group.colors.map(richColorCard).join("")}</div>
+      <div class="tone-colors">${group.colors.map((color) => richColorCard(color, groupKey)).join("")}</div>
     </article>`;
   }).join("");
 
