@@ -308,7 +308,40 @@ function rgbTriplet(hex) {
   ].join(" · ");
 }
 
+function uniqueList(items) {
+  return [...new Set(items.filter(Boolean))];
+}
+
+function accentEvidenceImages(color) {
+  const images = uniqueList([
+    color.image,
+    zoneImages[activeZone],
+    color.key.includes("-a02") || color.key.includes("-a05") ? "assets/sunset-people.jpg" : "",
+    color.key.includes("-a03") ? "assets/aranya-chapel-unsplash.jpg" : "",
+    color.key.includes("-a04") ? "assets/aranya-community.jpg" : "",
+    "assets/aranya-art-center.jpg"
+  ]);
+  const fallback = [
+    "assets/aranya-chapel-unsplash.jpg",
+    "assets/lonely-library-grey.jpg",
+    "assets/ucca-dune-museum.jpg",
+    "assets/aranya-community.jpg"
+  ];
+  return uniqueList([...images, ...fallback]).slice(0, 3);
+}
+
+function accentText(color) {
+  const zone = zones[activeZone];
+  return {
+    why: `${color.name}不是从建筑主体中放大的主色，而是从“${color.source}”这类高识别、小面积场景里提取出来的信号色。它和${zone.title}的主色、辅色保持距离，作用是在人流、活动、导视或安全节点中制造短暂注意力，同时不破坏区域原本的低饱和底色。${color.reason}`,
+    select: `选择 ${color.hex} 的原因，是它能够在${zone.title}的色彩系统里形成可见但受控的对比：远看能被识别，近看仍然保留阿那亚偏克制、偏自然的质感。它不适合铺满墙面或大面积景观设施，更适合承担“被看见一下”的任务。`,
+    boundary: `建议使用在${color.use}。面积控制应明显低于主色和辅色：作为按钮、票务、临时导视、活动标签、边界线或图标高光时最有效；如果连续铺开，会削弱主色调的安静感，也会让区域视觉变得商业化。`
+  };
+}
+
 function accentDetailBlock(color, index) {
+  const text = accentText(color);
+  const evidence = accentEvidenceImages(color);
   return `
     <section class="accent-detail-copy" id="accent-detail-${color.key}">
       <p class="accent-detail-no">NO. ${String(index + 1).padStart(2, "0")}</p>
@@ -324,12 +357,17 @@ function accentDetailBlock(color, index) {
 
       <section class="accent-explain">
         <p class="accent-label">何为此色</p>
-        <p>${color.reason}</p>
+        <p>${text.why}</p>
       </section>
 
       <section class="accent-explain">
-        <p class="accent-label">应用场景</p>
-        <p>${color.groupLogic}</p>
+        <p class="accent-label">为何选择</p>
+        <p>${text.select}</p>
+      </section>
+
+      <section class="accent-explain">
+        <p class="accent-label">应用边界</p>
+        <p>${text.boundary}</p>
       </section>
 
       <section class="accent-explain">
@@ -337,14 +375,20 @@ function accentDetailBlock(color, index) {
         <ol class="accent-process">
           <li><span>01</span><p>先定位 ${zones[activeZone].title} 的真实场景：${zoneResearch[activeZone]}</p></li>
           <li><span>02</span><p>从照片中锁定“${color.source}”，避开极端高光、阴影和后期滤镜。</p></li>
-          <li><span>03</span><p>提取稳定中间调并与同区域主色、辅色对比，只保留能承担提示、活动或识别功能的小面积颜色。</p></li>
+          <li><span>03</span><p>把稳定中间调与同区域主色、辅色并置测试，确认它只在${color.use}中成立，不反向变成大面积环境色。</p></li>
+          <li><span>04</span><p>保留接近 ${color.hex} 的色值作为导则色，并记录照片来源、使用边界和与区域色系的关系。</p></li>
         </ol>
       </section>
 
       <section class="accent-explain">
         <p class="accent-label">代表样本（照片匹配）</p>
         <div class="accent-photo-evidence">
-          <img src="${color.image}" alt="${color.name}来源照片">
+          ${evidence.map((image, photoIndex) => `
+            <figure>
+              <img src="${image}" alt="${color.name}照片证据 ${photoIndex + 1}">
+              <figcaption>${photoIndex === 0 ? "直接取样照片" : photoIndex === 1 ? "区域环境参照" : "应用氛围补充"}</figcaption>
+            </figure>
+          `).join("")}
         </div>
       </section>
     </section>
